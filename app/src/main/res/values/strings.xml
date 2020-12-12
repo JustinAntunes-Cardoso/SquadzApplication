@@ -1,0 +1,60 @@
+<resources>
+    <string name="app_name">squadzframes</string>
+    <string name="title_home">Home</string>
+    <string name="title_events">Events</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_friends">Friends</string>
+    <string name="title_more">More</string>
+    <string name="main_title">Main Title</string>
+    <string name="todo">TODO</string>
+    <string name="invite">invite</string>
+    <string name="username1">Justin King</string>
+    <string name="username2">Michael Angelo</string>
+    <string name="username3">David Dobrik</string>
+    <string name="username4">Ravu Patel</string>
+    <string name="squadzString">Squadz</string>
+    <string name="event">EVENTS</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="email">E-mail</string>
+    <string name="full_name">Full Name</string>
+    <string name="Password">Password</string>
+    <string name="dob">Date of Birth</string>
+    <string name="uname">Username</string>
+    <string name="fdob">MM/DD/YY</string>
+
+    <string name="profile_name">Arvie Bae</string>
+    <string name="bios">Hi, wazzap yall! Lets all play b-baall!!</string>
+    <string name="dm">Direct Message</string>
+    <string name="update_profile">Update Profile</string>
+    <string name="justin_name">Justin King</string>
+    <string name="justin_bio">Ball is life!</string>
+    <string name="add">Add</string>
+    <string name="message">Message</string>
+    <string name="createevent">Create Event</string>
+    <string name="partysize">Party Size</string>
+    <string name="desc">Image or textview</string>
+    <string name="find_players">Find Players</string>
+    <string name="connect">Get connected with<br />ballerz near you</string>
+    <!--Intro 1.3-->
+    <string name="next">next</string>
+    <string name="chat_meetup">Chat and Meet<br />Up</string>
+    <string name="make_plans">make plans to compete<br />or have fun together</string>
+    <!--Login Page-->
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="forgot_password">Forgot your Password?</string>
+    <string name="login">Login</string>
+    <string name="or">or</string>
+    <!--Intro 1.1-->
+    <string name="get_started">Get Started</string>
+    <string name="find_text">Want people <br />to find you?</string>
+    <string name="create_info">Create an account and find<br />connect with others</string>
+    <string name="welcome_text">Welcome<br /> to <br />Squadz</string>
+    <string name="account_quest">Already have an account?</string>
+    <string name="create_profile">Create My Profile</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="invite_players">Justin invited you to hoop.</string>
+
+
+</resources>

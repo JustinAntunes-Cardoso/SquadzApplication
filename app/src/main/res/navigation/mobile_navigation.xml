@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.example.squadzframes.ui.home.HomeFragment"
+        android:label="@string/squadzString"
+        tools:layout="@layout/fragment_home"
+        />
+
+    <fragment
+        android:id="@+id/navigation_events"
+        android:name="com.example.squadzframes.ui.events.EventsFragment"
+        android:label="@string/title_events"
+        tools:layout="@layout/fragment_events" >
+        <action
+            android:id="@+id/action_navigation_events_to_locateEventFragment"
+            app:destination="@id/locateEventFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_notifications"
+        android:name="com.example.squadzframes.ui.notifications.NotificationsFragment"
+        android:label="@string/title_notifications"
+        tools:layout="@layout/fragment_notifications" />
+
+    <fragment
+        android:id="@+id/navigation_friends"
+        android:name="com.example.squadzframes.ui.friends.FriendFragment"
+        android:label="@string/title_friends"
+        tools:layout="@layout/friend_fragment" />
+
+    <fragment
+        android:id="@+id/navigation_more"
+        android:name="com.example.squadzframes.ui.more.MoreFragment"
+        android:label="@string/title_more"
+        tools:layout="@layout/more_fragment" />
+    <activity
+        android:id="@+id/detailsPage"
+        android:name="com.example.squadzframes.DetailsPage"
+        android:label="activity_details_page"
+        tools:layout="@layout/activity_details_page" />
+    <activity
+        android:id="@+id/createEvent"
+        android:name="com.example.squadzframes.CreateEvent"
+        android:label="activity_create_event"
+        tools:layout="@layout/activity_create_event" />
+    <activity
+        android:id="@+id/locateEvent"
+        android:name="com.example.squadzframes.LocateEvent"
+        android:label="activity_locate_event"
+        tools:layout="@layout/activity_locate_event" />
+    <activity
+        android:id="@+id/openEvent"
+        android:name="com.example.squadzframes.OpenEvent"
+        android:label="activity_open_event"
+        tools:layout="@layout/activity_open_event" />
+    <fragment
+        android:id="@+id/locateEventFragment"
+        android:name="com.example.squadzframes.LocateEventFragment"
+        android:label="fragment_locate_event"
+        tools:layout="@layout/fragment_locate_event" >
+        <action
+            android:id="@+id/action_locateEventFragment_to_openEventFragment"
+            app:destination="@id/openEventFragment" />
+        <action
+            android:id="@+id/action_locateEventFragment_to_navigation_events"
+            app:destination="@id/navigation_events" />
+    </fragment>
+    <fragment
+        android:id="@+id/openEventFragment"
+        android:name="com.example.squadzframes.OpenEventFragment"
+        android:label="fragment_open_event"
+        tools:layout="@layout/fragment_open_event" >
+        <action
+            android:id="@+id/action_openEventFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
+        <action
+            android:id="@+id/action_openEventFragment_to_locateEventFragment"
+            app:destination="@id/locateEventFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailsFragment"
+        android:name="com.example.squadzframes.DetailsFragment"
+        android:label="fragment_details"
+        tools:layout="@layout/fragment_details" >
+        <action
+            android:id="@+id/action_detailsFragment_to_openEventFragment"
+            app:destination="@id/openEventFragment" />
+        <action
+            android:id="@+id/action_detailsFragment_to_mainActivity"
+            app:destination="@id/mainActivity" />
+    </fragment>
+    <activity
+        android:id="@+id/mainActivity"
+        android:name="com.example.squadzframes.MainActivity"
+        android:label="MainActivity" />
+
+    />
+</navigation>
