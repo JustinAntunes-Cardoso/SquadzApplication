@@ -5,7 +5,7 @@ import com.firebase.ui.auth.AuthUI
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
-import com.example.squadzframes.Login_Page
+import com.example.squadzframes.ui.intro.Login_Page
 
 const val RC_SIGN_IN = 1000
 

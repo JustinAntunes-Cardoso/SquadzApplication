@@ -12,10 +12,10 @@
         android:theme="@style/Theme.Squadzframes">
         <activity android:name="com.example.squadzframes.ui.events.popupActivity"
             tools:ignore="Instantiatable"/>
-        <activity android:name="com.example.squadzframes.Login_Page" />
-        <activity android:name="com.example.squadzframes.intro_1_3" />
-        <activity android:name="com.example.squadzframes.intro_1_2" />
-        <activity android:name="com.example.squadzframes.intro_1_1" />
+        <activity android:name="com.example.squadzframes.ui.intro.Login_Page" />
+        <activity android:name="com.example.squadzframes.ui.intro.intro_1_3" />
+        <activity android:name="com.example.squadzframes.ui.intro.intro_1_2" />
+        <activity android:name="com.example.squadzframes.ui.intro.intro_1_1" />
         <activity android:name="com.example.squadzframes.ui.events.DetailsPage" />
         <!--
 ABOVE android:parentActivityName=".ui.events.OpenEvent"
@@ -24,7 +24,7 @@ ABOVE android:parentActivityName=".ui.events.OpenEvent"
         <activity android:name="com.example.squadzframes.ui.events.OpenEvent" />
         <activity android:name="com.example.squadzframes.LocateEvent" />
         <activity android:name="com.example.squadzframes.ui.events.CreateEvent" />
-        <activity android:name="com.example.squadzframes.SignUpPage" />
+        <activity android:name="com.example.squadzframes.ui.intro.SignUpPage" />
         <activity android:name="com.example.squadzframes.FriendPage" />
         <activity android:name="com.example.squadzframes.ui.profile.profile" />
         <activity
@@ -34,7 +34,7 @@ ABOVE android:parentActivityName=".ui.events.OpenEvent"
                 <action android:name="android.intent.action.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.squadzframes.StartScreen">
+        <activity android:name="com.example.squadzframes.ui.intro.StartScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

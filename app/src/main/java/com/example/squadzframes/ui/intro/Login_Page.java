@@ -1,4 +1,4 @@
-package com.example.squadzframes;
+package com.example.squadzframes.ui.intro;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,6 +11,9 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.Toast;
+
+import com.example.squadzframes.MainActivity;
+import com.example.squadzframes.R;
 
 public class Login_Page extends AppCompatActivity {
 

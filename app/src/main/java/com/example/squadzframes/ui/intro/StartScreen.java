@@ -1,4 +1,4 @@
-package com.example.squadzframes;
+package com.example.squadzframes.ui.intro;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.squadzframes.R;
 
 public class StartScreen extends AppCompatActivity {
 
