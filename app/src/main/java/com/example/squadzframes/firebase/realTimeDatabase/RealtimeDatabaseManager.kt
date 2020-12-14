@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import com.example.squadzframes.firebase.authentication.AuthenticationManager
 import com.example.squadzframes.model.Comment
 import com.example.squadzframes.model.Post
+import com.example.squadzframes.model.UserInformation
 import com.google.firebase.database.*
 
 private const val POST_REFERENCE = "posts"
@@ -12,6 +13,7 @@ private const val POST_CONTENT_PATH = "content"
 private const val COMMENTS_REFERENCE = "comments"
 private const val COMMENT_POST_ID_PATH = "postId"
 private const val LIKES_REFERENCE = "likes"
+private const val USERINFO_REFERENCE = "UserInformation"
 
 class RealtimeDatabaseManager {
 
@@ -142,6 +144,7 @@ class RealtimeDatabaseManager {
         return Comment(postID, user, timestamp, content)
     }
 
+
     //get current time in millisecond
     private fun getCurrentTime() = System.currentTimeMillis()
 
@@ -169,5 +172,11 @@ class RealtimeDatabaseManager {
                 .child(key)
                 .child(LIKES_REFERENCE)
                 .setValue(content)
+    }
+
+    fun createAccount(username: String, fullName: String, email: String, password: String, dob: String) {
+        val personInfo = UserInformation(username, fullName, email, password, dob)
+        database.getReference(USERINFO_REFERENCE)
+                .setValue(personInfo)
     }
 }

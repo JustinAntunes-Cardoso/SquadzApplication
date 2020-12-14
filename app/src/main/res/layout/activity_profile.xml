@@ -153,7 +153,6 @@
         android:id="@+id/edit_button"
         android:layout_width="41dp"
         android:layout_height="26dp"
-        android:border="@color/black"
         android:backgroundTint="@color/black"
         android:fontFamily="@font/permanent_marker"
         android:text="@string/edit_button"
