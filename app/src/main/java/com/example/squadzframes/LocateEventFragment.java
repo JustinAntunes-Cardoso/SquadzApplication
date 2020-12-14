@@ -1,6 +1,7 @@
 package com.example.squadzframes;
 
-import android.media.Image;
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -9,8 +10,9 @@ import androidx.navigation.Navigation;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
+
+import com.example.squadzframes.ui.events.OpenEvent;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -19,6 +21,7 @@ import android.widget.ImageButton;
  */
 public class LocateEventFragment extends Fragment {
 
+    Activity context;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -64,13 +67,16 @@ public class LocateEventFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_locate_event, container, false);
+        context=getActivity();
 
         ImageButton btn = (ImageButton) view.findViewById(R.id.imageButton7);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Navigation.findNavController(view).navigate(R.id.action_locateEventFragment_to_openEventFragment);
+                Intent intent=new Intent(context, OpenEvent.class);
+                startActivity(intent);
+                //Navigation.findNavController(view).navigate(R.id.action_locateEventFragment_to_openEvent);
             }
         });
 

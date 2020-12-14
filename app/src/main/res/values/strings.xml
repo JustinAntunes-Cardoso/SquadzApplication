@@ -57,5 +57,45 @@
     <string name="invite_players">Justin invited you to hoop.</string>
     <string name="edit_button">edit</string>
 
+    <string name="location">Location: </string>
+    <string name="host">Host: </string>
+    <string name="time">Time: </string>
+    <string name="party_size">Party Size: </string>
 
+    <string name="location_info">Location Information </string>
+    <string name="host_info">Host Information </string>
+    <string name="time_info">Time Information </string>
+    <string name="party_size_info">Party Size Information </string>
+
+    <string name="details">Details</string>
+    <string name="join">Join</string>
+
+    <string name="meeting">Meeting Time: </string>
+    <string name="gameplay">Select Type of Gameplay: </string>
+    <string name="event_location">Location of Event: </string>
+    <string name="done">Done</string>
+
+    <string name="set_time">## : ## AM</string>
+    <string name="set_location">555 Weston Manor Jr. Drive</string>
+
+
+    <string-array name="party_details">
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+    </string-array>
+
+    <string-array name="comp_details">
+        <item>Competitive</item>
+        <item>Casual</item>
+    </string-array>
+
+    <string name="baller_name">Baller Name Here</string>
+    <string name="view">View</string>
 </resources>

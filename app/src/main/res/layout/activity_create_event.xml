@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CreateEvent"
+    tools:context=".ui.events.CreateEvent"
     android:background="@color/black">
 
     <ImageButton
-        android:id="@+id/imageButton5"
+        android:id="@+id/back_arrow"
         android:layout_width="38dp"
         android:layout_height="36dp"
         android:background="@null"
@@ -33,54 +33,6 @@
         app:srcCompat="@drawable/line_12" />
 
     <ImageView
-        android:id="@+id/imageView11"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.093"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView9"
-        app:layout_constraintVertical_bias="0.016"
-        app:srcCompat="@drawable/partysize" />
-
-    <ImageView
-        android:id="@+id/imageView12"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.121"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView11"
-        app:layout_constraintVertical_bias="0.028"
-        app:srcCompat="@drawable/meetingtime" />
-
-    <ImageView
-        android:id="@+id/imageView13"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.124"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView12"
-        app:layout_constraintVertical_bias="0.039"
-        app:srcCompat="@drawable/selecttype" />
-
-    <ImageView
-        android:id="@+id/imageView14"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.181"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView13"
-        app:layout_constraintVertical_bias="0.051"
-        app:srcCompat="@drawable/locationevent" />
-
-    <ImageView
         android:id="@+id/imageView15"
         android:layout_width="354dp"
         android:layout_height="291dp"
@@ -88,12 +40,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView14"
-        app:layout_constraintVertical_bias="0.157"
+        app:layout_constraintTop_toBottomOf="@+id/set_location"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/map1" />
 
     <ImageButton
-        android:id="@+id/imageButton4"
+        android:id="@+id/create_button"
         android:layout_width="115dp"
         android:layout_height="49dp"
         android:background="@null"
@@ -115,5 +67,102 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.021"
         app:srcCompat="@drawable/create_event" />
+
+    <Spinner
+        android:id="@+id/spinner_party"
+        android:layout_width="73dp"
+        android:layout_height="31dp"
+        android:layout_marginTop="6dp"
+        android:entries="@array/party_details"
+        android:background="@drawable/white_circle"
+        android:backgroundTint="@color/white"
+        app:layout_constraintStart_toStartOf="@+id/party_size"
+        app:layout_constraintTop_toBottomOf="@+id/party_size" />
+
+    <TextView
+        android:id="@+id/party_size"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="12dp"
+        android:fontFamily="@font/permanent_marker"
+        android:text="@string/party_size"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView9" />
+
+    <TextView
+        android:id="@+id/meeting_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/permanent_marker"
+        android:text="@string/meeting"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="@+id/spinner_party"
+        app:layout_constraintTop_toBottomOf="@+id/spinner_party" />
+
+    <TextView
+        android:id="@+id/gameplay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/permanent_marker"
+        android:text="@string/gameplay"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="@+id/set_time"
+        app:layout_constraintTop_toBottomOf="@+id/set_time" />
+
+    <Spinner
+        android:id="@+id/spinner_gameplay"
+        android:layout_width="73dp"
+        android:layout_height="31dp"
+        android:layout_marginTop="6dp"
+        android:entries="@array/comp_details"
+        android:background="@drawable/white_circle"
+        android:backgroundTint="@color/white"
+        app:layout_constraintStart_toStartOf="@+id/gameplay"
+        app:layout_constraintTop_toBottomOf="@+id/gameplay" />
+
+    <TextView
+        android:id="@+id/event_location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/permanent_marker"
+        android:text="@string/event_location"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="@+id/spinner_gameplay"
+        app:layout_constraintTop_toBottomOf="@+id/spinner_gameplay" />
+
+    <TextView
+        android:id="@+id/set_time"
+        android:layout_width="108dp"
+        android:layout_height="31dp"
+        android:layout_marginTop="9dp"
+        android:background="@drawable/white_circle"
+        android:backgroundTint="@color/white"
+        android:clickable="true"
+        android:text="@string/set_time"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/meeting_time"
+        app:layout_constraintTop_toBottomOf="@+id/meeting_time" />
+
+    <TextView
+        android:id="@+id/set_location"
+        android:layout_width="344dp"
+        android:layout_height="34dp"
+        android:layout_marginTop="9dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/white_circle"
+        android:backgroundTint="@color/white"
+        android:clickable="true"
+        android:text="@string/set_location"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/imageView15"
+        app:layout_constraintStart_toStartOf="@+id/event_location"
+        app:layout_constraintTop_toBottomOf="@+id/event_location" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

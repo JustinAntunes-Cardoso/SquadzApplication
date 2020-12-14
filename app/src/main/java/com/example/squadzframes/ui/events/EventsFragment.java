@@ -15,9 +15,6 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
-import com.example.squadzframes.CreateEvent;
-import com.example.squadzframes.FriendPage;
-import com.example.squadzframes.LocateEvent;
 import com.example.squadzframes.R;
 
 public class EventsFragment extends Fragment {

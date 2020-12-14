@@ -41,12 +41,12 @@
         tools:layout="@layout/more_fragment" />
     <activity
         android:id="@+id/detailsPage"
-        android:name="com.example.squadzframes.DetailsPage"
+        android:name="com.example.squadzframes.ui.events.DetailsPage"
         android:label="activity_details_page"
         tools:layout="@layout/activity_details_page" />
     <activity
         android:id="@+id/createEvent"
-        android:name="com.example.squadzframes.CreateEvent"
+        android:name="com.example.squadzframes.ui.events.CreateEvent"
         android:label="activity_create_event"
         tools:layout="@layout/activity_create_event" />
     <activity
@@ -56,7 +56,7 @@
         tools:layout="@layout/activity_locate_event" />
     <activity
         android:id="@+id/openEvent"
-        android:name="com.example.squadzframes.OpenEvent"
+        android:name="com.example.squadzframes.ui.events.OpenEvent"
         android:label="activity_open_event"
         tools:layout="@layout/activity_open_event" />
     <fragment
@@ -65,11 +65,11 @@
         android:label="fragment_locate_event"
         tools:layout="@layout/fragment_locate_event" >
         <action
-            android:id="@+id/action_locateEventFragment_to_openEventFragment"
-            app:destination="@id/openEventFragment" />
-        <action
             android:id="@+id/action_locateEventFragment_to_navigation_events"
             app:destination="@id/navigation_events" />
+        <action
+            android:id="@+id/action_locateEventFragment_to_openEvent"
+            app:destination="@id/openEvent" />
     </fragment>
     <fragment
         android:id="@+id/openEventFragment"

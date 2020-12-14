@@ -1,14 +1,7 @@
 package com.example.squadzframes;
 
-import android.content.Intent;
-import android.media.MediaPlayer;
-import android.net.Uri;
 import android.os.Bundle;
-import android.widget.ImageView;
-import android.widget.MediaController;
-import android.widget.VideoView;
 
-import com.example.squadzframes.ui.friends.FriendFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;

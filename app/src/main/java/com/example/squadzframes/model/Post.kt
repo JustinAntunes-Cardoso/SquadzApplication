@@ -4,26 +4,23 @@ import android.os.Parcel
 import android.os.Parcelable
 
 data class Post (
-        val id: String? = "",
-        val content: String? = "",
-        val author: String? = "",
-        val timestamp: Long = 0L,
-        val likes: Int = 0
+        val location: String? = "",
+        val host: String? = "",
+        val time: String? = "",
+        val party: String? = ""
 ) : Parcelable {
     constructor(parcel: Parcel) : this(
             parcel.readString(),
             parcel.readString(),
             parcel.readString(),
-            parcel.readLong(),
-            parcel.readInt()) {
+            parcel.readString()) {
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
-        parcel.writeString(id)
-        parcel.writeString(content)
-        parcel.writeString(author)
-        parcel.writeLong(timestamp)
-        parcel.writeInt(likes)
+        parcel.writeString(location)
+        parcel.writeString(host)
+        parcel.writeString(time)
+        parcel.writeString(party)
     }
 
     override fun describeContents(): Int {

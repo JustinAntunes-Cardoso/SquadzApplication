@@ -1,4 +1,4 @@
-package com.example.squadzframes;
+package com.example.squadzframes.ui.events;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,19 +7,34 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
+import android.widget.Toast;
 
-import com.example.squadzframes.ui.friends.FriendFragment;
+import com.example.squadzframes.FriendPage;
+import com.example.squadzframes.R;
 import com.example.squadzframes.ui.home.HomeFragment;
 
 public class DetailsPage extends AppCompatActivity {
+
+    TextView location,host,time,party;
+
+    String locData,hostData,timeData,partyData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details_page);
 
-        ImageButton btn = (ImageButton) findViewById(R.id.imageButton8);
-        btn.setOnClickListener(new View.OnClickListener() {
+        location = findViewById(R.id.location_info);
+        host = findViewById(R.id.host_info);
+        time = findViewById(R.id.time_info);
+        party = findViewById(R.id.party_info);
+
+        getData();
+        setData();
+
+        ImageButton backButton = (ImageButton) findViewById(R.id.imageButton8);
+        backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 goBack();
@@ -34,7 +49,7 @@ public class DetailsPage extends AppCompatActivity {
             }
         });
 
-        ImageButton btttn = (ImageButton) findViewById(R.id.imageButton10);
+        Button btttn = (Button) findViewById(R.id.join_button);
         btttn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -42,7 +57,25 @@ public class DetailsPage extends AppCompatActivity {
             }
         });
 
+    }
 
+    private void getData(){
+        if(getIntent().hasExtra("location") && getIntent().hasExtra("host") &&
+                getIntent().hasExtra("time") && getIntent().hasExtra("party")){
+            locData = getIntent().getStringExtra("location");
+            hostData = getIntent().getStringExtra("host");
+            timeData = getIntent().getStringExtra("time");
+            partyData = getIntent().getStringExtra("party");
+        }else{
+            Toast.makeText(this, "no data.", Toast.LENGTH_LONG).show();
+        }
+    }
+
+    private void setData(){
+        location.setText(locData);
+        host.setText(hostData);
+        time.setText(timeData);
+        party.setText(partyData);
     }
 
     public void goBack(){

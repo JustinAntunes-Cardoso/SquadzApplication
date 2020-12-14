@@ -2,13 +2,9 @@ package com.example.squadzframes;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.ImageView;
-
-import com.example.squadzframes.ui.friends.FriendFragment;
 
 public class FriendPage extends AppCompatActivity {
 

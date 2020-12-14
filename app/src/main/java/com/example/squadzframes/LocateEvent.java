@@ -6,11 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 
-import com.example.squadzframes.ui.events.EventsFragment;
-import com.example.squadzframes.ui.friends.FriendFragment;
-import com.example.squadzframes.ui.home.HomeFragment;
+import com.example.squadzframes.ui.events.OpenEvent;
 
 public class LocateEvent extends AppCompatActivity {
 

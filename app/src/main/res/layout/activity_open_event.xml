@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black"
-    tools:context=".OpenEvent">
+    tools:context=".ui.events.OpenEvent">
+
 
     <ImageView
         android:id="@+id/imageView18"
@@ -19,7 +20,7 @@
         app:srcCompat="@drawable/open_event" />
 
     <ImageButton
-        android:id="@+id/imageButton8"
+        android:id="@+id/back_arrow_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@null"
@@ -31,6 +32,17 @@
         app:layout_constraintVertical_bias="0.023"
         app:srcCompat="@drawable/backarrow" />
 
+    <!--<ImageView
+        android:id="@+id/imageView20"
+        android:layout_width="match_parent"
+        android:layout_height="665dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView9"
+        app:layout_constraintVertical_bias="0.736"
+        app:srcCompat="@drawable/white_square" /> -->
+
     <ImageView
         android:id="@+id/imageView9"
         android:layout_width="410dp"
@@ -41,18 +53,24 @@
         app:layout_constraintVertical_bias="0.004"
         app:srcCompat="@drawable/line_12" />
 
-    <ImageView
-        android:id="@+id/imageView20"
-        android:layout_width="379dp"
-        android:layout_height="665dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView9"
-        app:layout_constraintVertical_bias="0.736"
-        app:srcCompat="@drawable/whiterectangle" />
 
-    <ImageView
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="5dp"
+        android:scrollbars="vertical"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imageView9"
+        app:layout_constraintVertical_bias="0.0" />
+
+
+
+    <!--<ImageView
         android:id="@+id/imageView21"
         android:layout_width="375dp"
         android:layout_height="626dp"
@@ -62,7 +80,7 @@
         app:layout_constraintStart_toStartOf="@+id/imageView20"
         app:layout_constraintTop_toTopOf="@+id/imageView20"
         app:layout_constraintVertical_bias="0.297"
-        app:srcCompat="@drawable/listviewopenevent" />
+        app:srcCompat="@drawable/listviewopenevent" />-->
 
     <Button
         android:id="@+id/button1"

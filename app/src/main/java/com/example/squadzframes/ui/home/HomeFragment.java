@@ -1,7 +1,6 @@
 package com.example.squadzframes.ui.home;
 
 import android.content.Intent;
-import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.MediaController;
-import android.widget.TextView;
 import android.widget.VideoView;
 
 import androidx.annotation.NonNull;
@@ -19,7 +17,6 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.squadzframes.R;
-import com.example.squadzframes.profile;
 
 public class HomeFragment extends Fragment {
 
@@ -71,7 +68,7 @@ public class HomeFragment extends Fragment {
 
     public void openProfile()
     {
-        Intent intent = new Intent(getActivity(), com.example.squadzframes.profile.class);
+        Intent intent = new Intent(getActivity(), com.example.squadzframes.ui.profile.profile.class);
         startActivity(intent);
     }
 

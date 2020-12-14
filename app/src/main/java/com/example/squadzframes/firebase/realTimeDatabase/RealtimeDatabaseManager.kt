@@ -29,10 +29,10 @@ class RealtimeDatabaseManager {
     Uses the authentication manager class to get the current logged in user name,
     current time and returns newly created Post instance
      */
-    private fun createPost(key: String, content: String) : Post {
+    private fun createPost(location: String, time: String,party: String) : Post {
         val user = authenticationManager.getCurrentUser()
-        val timestamp = getCurrentTime()
-        return Post(key, content, user, timestamp)
+        //val timestamp = getCurrentTime()
+        return Post(location, user, time, party)
     }
 
     fun addComment(postID: String, content: String) {
@@ -155,7 +155,10 @@ class RealtimeDatabaseManager {
         posts will be added as a child of the posts node
          */
         val key = postsReference.push().key ?: ""
-        val post = createPost(key, content)
+        val location = ""//database.reference.
+        val time = ""
+        val party = ""
+        val post = createPost(location, time, party)
         /*
         to access the newly created location you can use the child method and return a reference to the location
          */
