@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.squadzframes.ui.home.HomeFragment;
+
 public class SignUpPage extends AppCompatActivity {
 
     @Override
