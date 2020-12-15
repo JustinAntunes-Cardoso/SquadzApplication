@@ -35,6 +35,12 @@
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/logo" />
 
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="175dp"
+        tools:layout_editor_absoluteY="236dp"/>
+
     <EditText
         android:id="@+id/editTextEmailAddress"
         android:layout_width="wrap_content"
@@ -76,7 +82,6 @@
         android:backgroundTint="@color/white"
         android:ems="10"
         android:fontFamily="@font/permanent_marker"
-
         android:inputType="textPersonName"
         android:text="@string/uname"
         android:textColor="#FFFFFF"

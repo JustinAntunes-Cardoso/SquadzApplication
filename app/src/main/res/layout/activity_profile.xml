@@ -20,6 +20,24 @@
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/richardbackground" />
 
+    <Button
+        android:id="@+id/button_logout"
+        android:layout_width="82dp"
+        android:layout_height="44dp"
+        android:backgroundTint="@color/white"
+        android:fontFamily="@font/permanent_marker"
+        android:text="logout"
+        android:textColor="@color/black"
+        android:textSize="10dp"
+        app:cornerRadius="100dp"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.951"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.023" />
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="129dp"

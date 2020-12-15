@@ -13,7 +13,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.squadzframes.MainActivity;
+import com.example.squadzframes.ui.home.MainActivity;
 import com.example.squadzframes.R;
 import com.example.squadzframes.model.Event;
 import com.google.firebase.database.DatabaseReference;

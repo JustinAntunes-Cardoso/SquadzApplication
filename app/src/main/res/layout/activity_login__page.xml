@@ -20,15 +20,15 @@
         app:srcCompat="@drawable/logo" />
 
     <EditText
-        android:id="@+id/editUserName"
+        android:id="@+id/editLoginEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:autofillHints="@string/username"
+        android:autofillHints="@string/email"
         android:backgroundTint="@color/white"
         android:ems="10"
         android:fontFamily="@font/segoe_ui"
         android:gravity="start"
-        android:inputType="textPersonName"
+        android:inputType="textEmailAddress"
         android:textAlignment="center"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -38,7 +38,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.534"
         tools:ignore="RtlCompat"
-        tools:text="@string/username" />
+        tools:text="@string/email" />
 
     <EditText
         android:id="@+id/loginPassword"
@@ -53,9 +53,9 @@
         android:text="@string/Password"
         android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/editUserName"
+        app:layout_constraintEnd_toEndOf="@+id/editLoginEmail"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/editUserName"
+        app:layout_constraintStart_toStartOf="@+id/editLoginEmail"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.594"
         tools:ignore="RtlCompat" />
