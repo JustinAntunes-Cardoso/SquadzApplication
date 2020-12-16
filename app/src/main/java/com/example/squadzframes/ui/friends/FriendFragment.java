@@ -13,6 +13,7 @@ import androidx.navigation.Navigation;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 
 import com.example.squadzframes.R;
@@ -32,12 +33,11 @@ public class FriendFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.friend_fragment, container, false);
 
-
-        ImageView btn = (ImageView) root.findViewById(R.id.image2);
-        btn.setOnClickListener(new View.OnClickListener() {
+        Button friendListButton = (Button) root.findViewById(R.id.friends_list_button);
+        friendListButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                openProfile();
+            public void onClick(View view) {
+                Navigation.findNavController(root).navigate(R.id.action_navigation_friends_to_friendsListActivity);
             }
         });
 

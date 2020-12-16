@@ -29,8 +29,8 @@ public class EventsFragment extends Fragment {
         final TextView textView = root.findViewById(R.id.text_dashboard);
         eventsViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
 
-        @Override
-        public void onChanged(@Nullable String s) {
+            @Override
+            public void onChanged(@Nullable String s) {
                 textView.setText(s);
             }
         });
@@ -40,8 +40,7 @@ public class EventsFragment extends Fragment {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), CreateEvent.class);
-                startActivity(intent);
+                Navigation.findNavController(root).navigate(R.id.action_navigation_events_to_locateEventMap);
             }
         });
 
@@ -49,7 +48,7 @@ public class EventsFragment extends Fragment {
         bttn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Navigation.findNavController(root).navigate(R.id.action_navigation_events_to_locateEventFragment);
+                Navigation.findNavController(root).navigate(R.id.action_navigation_events_to_openEvent);
             }
         });
 

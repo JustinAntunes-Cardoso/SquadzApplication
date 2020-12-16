@@ -9,204 +9,26 @@
     tools:context=".ui.notifications.NotificationsFragment">
 
 
-    <ImageView
-        android:id="@+id/image2"
-        android:layout_width="90dp"
-        android:layout_height="90dp"
-        android:layout_marginTop="96dp"
-        android:contentDescription="@string/todo"
-        android:src="@drawable/face1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.049"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/image3"
-        android:layout_width="90dp"
-        android:layout_height="90dp"
-        android:layout_marginTop="16dp"
-        android:contentDescription="@string/todo"
-        android:src="@drawable/face2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.049"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/image2" />
-
-    <ImageView
-        android:id="@+id/image4"
-        android:layout_width="90dp"
-        android:layout_height="90dp"
-        android:layout_marginTop="16dp"
-        android:contentDescription="@string/todo"
-        android:src="@drawable/face3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.049"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/image3" />
-
-    <ImageView
-        android:id="@+id/image5"
-        android:layout_width="90dp"
-        android:layout_height="90dp"
-        android:layout_marginTop="28dp"
-        android:contentDescription="@string/todo"
-        android:src="@drawable/face4"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.049"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/image4" />
-
     <Button
-        android:id="@+id/get_started_button"
-        android:layout_width="150dp"
-        android:layout_height="62dp"
+        android:id="@+id/friends_list_button"
+        android:layout_width="228dp"
+        android:layout_height="77dp"
         android:layout_marginBottom="68dp"
         android:backgroundTint="#FFFFFF"
         android:fontFamily="@font/permanent_marker"
         android:letterSpacing="0.05"
         android:lineSpacingExtra="8sp"
-        android:text="@string/invite"
+        android:text="@string/friends_list"
         android:textColor="#000000"
         android:textSize="25sp"
         android:textStyle="normal"
         app:cornerRadius="100dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.938"
+        app:layout_constraintHorizontal_bias="0.544"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.184" />
-
-    <Button
-        android:id="@+id/get_started_button1"
-        android:layout_width="150dp"
-        android:layout_height="62dp"
-        android:layout_marginBottom="68dp"
-        android:backgroundTint="#FFFFFF"
-        android:fontFamily="@font/permanent_marker"
-        android:letterSpacing="0.05"
-        android:lineSpacingExtra="8sp"
-        android:text="@string/invite"
-        android:textColor="#000000"
-        android:textSize="25sp"
-        android:textStyle="normal"
-        app:cornerRadius="100dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.938"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/get_started_button"
-        app:layout_constraintVertical_bias="0.105" />
-
-    <Button
-        android:id="@+id/get_started_button2"
-        android:layout_width="150dp"
-        android:layout_height="62dp"
-        android:layout_marginBottom="68dp"
-        android:backgroundTint="#FFFFFF"
-        android:fontFamily="@font/permanent_marker"
-        android:letterSpacing="0.05"
-        android:lineSpacingExtra="8sp"
-        android:text="@string/invite"
-        android:textColor="#000000"
-        android:textSize="25sp"
-        android:textStyle="normal"
-        app:cornerRadius="100dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.938"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/get_started_button1"
-        app:layout_constraintVertical_bias="0.096" />
-
-    <Button
-        android:id="@+id/get_started_button3"
-        android:layout_width="150dp"
-        android:layout_height="62dp"
-        android:layout_marginBottom="68dp"
-        android:backgroundTint="#FFFFFF"
-        android:fontFamily="@font/permanent_marker"
-        android:letterSpacing="0.05"
-        android:lineSpacingExtra="8sp"
-        android:text="@string/invite"
-        android:textColor="#000000"
-        android:textSize="25sp"
-        android:textStyle="normal"
-        app:cornerRadius="100dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.938"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/get_started_button2"
-        app:layout_constraintVertical_bias="0.197" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/permanent_marker"
-        android:lineSpacingExtra="14.7sp"
-        android:text="@string/username1"
-        android:textColor="@color/white"
-        android:textSize="12sp"
-        android:textStyle="normal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/get_started_button"
-        app:layout_constraintHorizontal_bias="0.333"
-        app:layout_constraintStart_toEndOf="@+id/image2"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.185" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/permanent_marker"
-        android:lineSpacingExtra="14.7sp"
-        android:textColor="@color/white"
-        android:textSize="12sp"
-        android:textStyle="normal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/get_started_button"
-        app:layout_constraintHorizontal_bias="0.318"
-        app:layout_constraintStart_toEndOf="@+id/image2"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.164"
-        android:text="@string/username2" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/permanent_marker"
-        android:lineSpacingExtra="14.7sp"
-        android:textColor="@color/white"
-        android:textSize="12sp"
-        android:textStyle="normal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/get_started_button"
-        app:layout_constraintHorizontal_bias="0.318"
-        app:layout_constraintStart_toEndOf="@+id/image2"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
-        app:layout_constraintVertical_bias="0.206"
-        android:text="@string/username3"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/permanent_marker"
-        android:lineSpacingExtra="14.7sp"
-        android:textColor="@color/white"
-        android:textSize="12sp"
-        android:textStyle="normal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/get_started_button"
-        app:layout_constraintHorizontal_bias="0.318"
-        app:layout_constraintStart_toEndOf="@+id/image2"
-        app:layout_constraintTop_toBottomOf="@+id/textView3"
-        app:layout_constraintVertical_bias="0.258"
-        android:text="@string/username4" />
+        app:layout_constraintVertical_bias="0.239" />
 
     <ImageView
         android:id="@+id/imageView3"

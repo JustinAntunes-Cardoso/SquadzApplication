@@ -20,6 +20,12 @@
         <action
             android:id="@+id/action_navigation_events_to_locateEventFragment"
             app:destination="@id/locateEventFragment" />
+        <action
+            android:id="@+id/action_navigation_events_to_locateEventMap"
+            app:destination="@id/locateEventMap" />
+        <action
+            android:id="@+id/action_navigation_events_to_openEvent"
+            app:destination="@id/openEvent" />
     </fragment>
 
     <fragment
@@ -36,13 +42,11 @@
         <action
             android:id="@+id/action_navigation_friends_to_allUsersActivity"
             app:destination="@id/allUsersActivity" />
+        <action
+            android:id="@+id/action_navigation_friends_to_friendsListActivity"
+            app:destination="@id/friendsListActivity" />
     </fragment>
 
-    <fragment
-        android:id="@+id/navigation_more"
-        android:name="com.example.squadzframes.ui.more.MoreFragment"
-        android:label="@string/title_more"
-        tools:layout="@layout/more_fragment" />
     <activity
         android:id="@+id/detailsPage"
         android:name="com.example.squadzframes.ui.events.DetailsPage"
@@ -108,6 +112,16 @@
         android:name="com.example.squadzframes.ui.friends.AllUsersActivity"
         android:label="activity_all_users"
         tools:layout="@layout/activity_all_users" />
+    <activity
+        android:id="@+id/friendsListActivity"
+        android:name="com.example.squadzframes.ui.friends.FriendsListActivity"
+        android:label="activity_friends_list"
+        tools:layout="@layout/activity_friends_list" />
+    <activity
+        android:id="@+id/locateEventMap"
+        android:name="com.example.squadzframes.ui.events.LocateEventMap"
+        android:label="locateeventmap"
+        tools:layout="@layout/locateeventmap" />
 
     />
 </navigation>

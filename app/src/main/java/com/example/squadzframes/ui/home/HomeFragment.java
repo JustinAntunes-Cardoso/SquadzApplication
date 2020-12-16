@@ -26,6 +26,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -46,21 +47,24 @@ public class HomeFragment extends Fragment {
         profile = (CircleImageView) root.findViewById(R.id.profile_image);
 
         currentUser = FirebaseAuth.getInstance().getCurrentUser();
-        if(currentUser !=null) {
+        if (currentUser != null) {
             currentUid = currentUser.getUid();
             userDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(currentUid);
-            userDatabase.addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    //String image = snapshot.child("image").getValue().toString();
+            if (userDatabase != null) {
+                userDatabase.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        String image = snapshot.child("image").getValue().toString();
+//                String back_image = snapshot.child("background_image").getValue().toString();
+                        Picasso.get().load(image).placeholder(R.drawable.default_avatar).into(profile);
+                    }
+                    //Picasso.get().load(back_image).into(background);
 
-                }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {
-
-                }
-            });
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                    }
+                });
+            }
         }
 
         profile.setOnClickListener(new View.OnClickListener() {

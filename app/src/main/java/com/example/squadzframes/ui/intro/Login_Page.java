@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -49,19 +50,14 @@ public class Login_Page extends AppCompatActivity {
         sign_up_button = findViewById(R.id.sign_up_button);
         loginProgress = new ProgressDialog(this);
 
-//        SharedPreferences preferences = getSharedPreferences("checkbox", MODE_PRIVATE);
-//        String checkbox = preferences.getString("remember", "");
-//        if (checkbox.equals("true")) {
-//            Intent send = new Intent(Login_Page.this, MainActivity.class);
-//            startActivity(send);
-//        } else {
-//            Toast.makeText(Login_Page.this, "Please Sign in", Toast.LENGTH_SHORT).show();
-//        }
+        SharedPreferences preferences = getSharedPreferences("checkbox", MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString("remember", "true");
+        editor.apply();
 
         //initialize the views that we want to keep
         emailEdit = (EditText) findViewById(R.id.editLoginEmail);
         passwordEdit = (EditText) findViewById(R.id.loginPassword);
-        switch1 = (Switch) findViewById(R.id.switch1);
 
         login_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,25 +80,6 @@ public class Login_Page extends AppCompatActivity {
             }
         });
 
-//        switch1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-//            @Override
-//            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-//                if (buttonView.isChecked()) {
-//                    SharedPreferences preferences = getSharedPreferences("checkbox", MODE_PRIVATE);
-//                    SharedPreferences.Editor editor = preferences.edit();
-//                    editor.putString("remember", "true");
-//                    editor.apply();
-//                    Toast.makeText(Login_Page.this, "Checked", Toast.LENGTH_SHORT).show();
-//                } else if (!buttonView.isChecked()) {
-//                    SharedPreferences preferences = getSharedPreferences("checkbox", MODE_PRIVATE);
-//                    SharedPreferences.Editor editor = preferences.edit();
-//                    editor.putString("remember", "false");
-//                    editor.apply();
-//                    Toast.makeText(Login_Page.this, "Unchecked", Toast.LENGTH_SHORT).show();
-//
-//                }
-//            }
-//        });
 
         sign_up_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -138,26 +115,4 @@ public class Login_Page extends AppCompatActivity {
                 });
     }
 
-//    public void saveData(){
-//        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFs,MODE_PRIVATE);
-//        SharedPreferences.Editor editor = sharedPreferences.edit();
-//        editor.putString(TEXT,username.getText().toString());
-//        editor.putString(TEXTPASS,password.getText().toString());
-//        editor.putBoolean(SWITCH1,switch1.isChecked());
-//
-//        editor.apply();
-//        Toast.makeText(this,"data saved",Toast.LENGTH_SHORT).show();
-//    }
-//
-//    public void loadData(){
-//        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFs,MODE_PRIVATE);
-//        textUser = sharedPreferences.getString(TEXT,"");
-//        textPass = sharedPreferences.getString(TEXTPASS,"");
-//        switchOnOff = sharedPreferences.getBoolean(SWITCH1,false);
-//    }
-//
-//    public void updateViews(){
-//     username.setText(textUser);
-//     password.setText(textPass);
-//    }
 }

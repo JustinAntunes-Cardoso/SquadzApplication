@@ -17,6 +17,10 @@ public class Event {
         this.complvl = "";
     }
 
+    public Event(String host){
+        this.host = "";
+    }
+
     public Event(String id, String location, String host, String time, String partySize, String complvl) {
         this.id = id;
         this.location = location;

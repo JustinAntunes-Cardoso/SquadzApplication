@@ -22,7 +22,7 @@
     <string name="uname">Username</string>
     <string name="fdob">MM/DD/YY</string>
 
-    <string name="profile_name">Arvie Bae</string>
+    <string name="profile_name">Justin Antunes</string>
     <string name="bios">Hi, wazzap yall! Lets all play b-baall!!</string>
     <string name="dm">Direct Message</string>
     <string name="update_profile">Update Profile</string>
@@ -34,11 +34,9 @@
     <string name="partysize">Party Size</string>
     <string name="desc">Image or textview</string>
     <string name="find_players">Find Players</string>
-    <string name="connect">Get connected with<br />ballerz near you</string>
     <!--Intro 1.3-->
     <string name="next">next</string>
     <string name="chat_meetup">Chat and Meet<br />Up</string>
-    <string name="make_plans">make plans to compete<br />or have fun together</string>
     <!--Login Page-->
     <string name="username">Username</string>
     <string name="password">Password</string>
@@ -48,7 +46,6 @@
     <!--Intro 1.1-->
     <string name="get_started">Get Started</string>
     <string name="find_text">Want people <br />to find you?</string>
-    <string name="create_info">Create an account and find<br />connect with others</string>
     <string name="welcome_text">Welcome<br /> to <br />Squadz</string>
     <string name="account_quest">Already have an account?</string>
     <string name="create_profile">Create My Profile</string>
@@ -99,4 +96,22 @@
 
     <string name="baller_name">Baller Name Here</string>
     <string name="view">View</string>
+    <string name="title_activity_friends_list">FriendsListActivity</string>
+    <!--
+    This string is used for square devices and overridden by hello_world in
+    values-round/strings.xml for round devices.
+    -->
+    <string name="hello_world">Hello Square World!</string>
+    <string name="friends">Friends</string>
+    <string name="friends_list">Friends List</string>
+
+    <string name="connect">Get connected with<br /> ballerz near you</string>
+
+    <string name="make_plans">make plans to compete<br /> or have fun together</string>
+
+    <string name="create_info">Create an account and find<br /> connect with others</string>
+
+    <!--    string api key for google maps used by LocateEventMap.class -->
+    <string name="google_maps_key" translatable="false">AIzaSyDrxoUOrSU8E8_9zi7Ceth-rvztIYZ4ANU</string>
+    <string name="gameplaytype">Competitive</string>
 </resources>

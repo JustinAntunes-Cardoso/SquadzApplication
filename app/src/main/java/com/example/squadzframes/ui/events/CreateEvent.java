@@ -16,6 +16,8 @@ import android.widget.Toast;
 import com.example.squadzframes.ui.home.MainActivity;
 import com.example.squadzframes.R;
 import com.example.squadzframes.model.Event;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -24,6 +26,8 @@ public class CreateEvent extends AppCompatActivity {
     // Write a message to the database
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference databaseReference;
+    DatabaseReference userInfoReference;
+    FirebaseUser currentUser;
     String choiceP;
     String choiceG;
     TextView setTime,setLocation;
@@ -32,6 +36,8 @@ public class CreateEvent extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_event);
         databaseReference = database.getReference("Event Details");
+        userInfoReference = database.getReference("Users");
+        currentUser= FirebaseAuth.getInstance().getCurrentUser();
         Spinner partySizeSpin = (Spinner) findViewById(R.id.spinner_party);
         Spinner gameplaySpin = (Spinner) findViewById(R.id.spinner_gameplay);
 
@@ -72,12 +78,10 @@ public class CreateEvent extends AppCompatActivity {
         });
 
         setLocation = (TextView) findViewById(R.id.set_location);
-        setLocation.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //TODO
-            }
-        });
+        Intent intent = getIntent();
+        String locationPassed = intent.getStringExtra("location");
+
+        setLocation.setText(locationPassed);
 
         ImageButton btn = (ImageButton) findViewById(R.id.back_arrow);
         btn.setOnClickListener(new View.OnClickListener() {
@@ -100,9 +104,10 @@ public class CreateEvent extends AppCompatActivity {
 
     private void sendData() {
         String setTimeText= setTime.getText().toString();
-        String setHostText = "Justin";
+        String setHostText = "Justin Antunes";
         String setLocationText = setLocation.getText().toString();
         String id = databaseReference.push().getKey();
+        String userID;
 
         if(!TextUtils.isEmpty(setTimeText)){
             Event data = new Event(id,setLocationText,setHostText,setTimeText,choiceP,choiceG);

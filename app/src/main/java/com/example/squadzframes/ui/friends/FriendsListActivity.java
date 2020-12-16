@@ -1,10 +1,5 @@
 package com.example.squadzframes.ui.friends;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,18 +9,18 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.squadzframes.R;
 import com.example.squadzframes.model.Users;
-import com.example.squadzframes.ui.events.DetailsPage;
-import com.example.squadzframes.ui.events.OpenEvent;
 import com.example.squadzframes.ui.home.MainActivity;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
+import com.google.android.gms.auth.api.Auth;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
@@ -35,9 +30,12 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class AllUsersActivity extends AppCompatActivity {
+public class FriendsListActivity extends AppCompatActivity {
 
     private RecyclerView allUserList;
     private StorageReference mStorageRef = FirebaseStorage.getInstance().getReference();
@@ -48,6 +46,7 @@ public class AllUsersActivity extends AppCompatActivity {
     FirebaseRecyclerOptions<Users> options;
     private RecyclerView FindFriendsRecyclerList;
     private DatabaseReference mFriendRequestDatabase;
+    private DatabaseReference mFriendDatabase;
     String currentUserID;
     String imageString;
     String mCurrentState;
@@ -64,13 +63,15 @@ public class AllUsersActivity extends AppCompatActivity {
 
         StorageReference filepathRef = mStorageRef.child("profile_images").child("profile:" + currentUserID + ".jpg");
 
+        mCurrentUser = FirebaseAuth.getInstance().getCurrentUser();
         mUsersDatabase = FirebaseDatabase.getInstance().getReference().child("Users");
         mFriendRequestDatabase = FirebaseDatabase.getInstance().getReference().child("Friend_Request");
-        mCurrentUser = FirebaseAuth.getInstance().getCurrentUser();
+        mFriendDatabase = FirebaseDatabase.getInstance().getReference().child("Friends");//.child(mCurrentUser.getUid());
+
 
         mCurrentState = "not_friends";
 
-        query=mUsersDatabase;
+        query=mFriendDatabase;
         options =
                 new FirebaseRecyclerOptions.Builder<Users>()
                         .setQuery(query, Users.class)
@@ -83,7 +84,7 @@ public class AllUsersActivity extends AppCompatActivity {
         bttn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent mainIntent = new Intent(AllUsersActivity.this, MainActivity.class);
+                Intent mainIntent = new Intent(FriendsListActivity.this, MainActivity.class);
                 startActivity(mainIntent);
             }
         });
@@ -94,14 +95,14 @@ public class AllUsersActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-        FirebaseRecyclerAdapter<Users,UsersViewHolder>
-                firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<Users, UsersViewHolder>(options) {
+        FirebaseRecyclerAdapter<Users, FriendsListActivity.UsersViewHolder>
+                firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<Users, FriendsListActivity.UsersViewHolder>(options) {
 
             @Override
-            protected void onBindViewHolder(@NonNull UsersViewHolder usersViewHolder, int position, @NonNull Users users) {
+            protected void onBindViewHolder(@NonNull FriendsListActivity.UsersViewHolder usersViewHolder, int position, @NonNull Users users) {
                 usersViewHolder.setName(users.getName());
                 //usersViewHolder.setStatus(users.getMessage());
-                currentUserID= mAuth.getCurrentUser().getUid();
+                //currentUserID= mAuth.getCurrentUser().getUid();
                 //imageString = "profile:" + currentUserID + ".jpg";
                 usersViewHolder.setUserImage(users.getImageProfile(), getApplicationContext());
 
@@ -111,7 +112,7 @@ public class AllUsersActivity extends AppCompatActivity {
                 usersViewHolder.mView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent profileIntent = new Intent(AllUsersActivity.this,FriendPageActivity.class);
+                        Intent profileIntent = new Intent(FriendsListActivity.this,FriendPageActivity.class);
                         profileIntent.putExtra("current_user_id", current_user_id);
 //                        intent.putExtra("host",host);
 //                        intent.putExtra("time",time);
@@ -132,9 +133,9 @@ public class AllUsersActivity extends AppCompatActivity {
 
             @NonNull
             @Override
-            public UsersViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            public FriendsListActivity.UsersViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
                 View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.all_users, parent, false);
-                UsersViewHolder viewHolder = new UsersViewHolder(view);
+                FriendsListActivity.UsersViewHolder viewHolder = new FriendsListActivity.UsersViewHolder(view);
                 return viewHolder;
             }
         };
@@ -149,6 +150,7 @@ public class AllUsersActivity extends AppCompatActivity {
         TextView userName, userStatus;
         CircleImageView userImageView;
         Button add;
+
 
         public UsersViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -165,7 +167,6 @@ public class AllUsersActivity extends AppCompatActivity {
         }
         public void setUserImage(String image, Context ctx){
             userImageView = mView.findViewById(R.id.user_image);
-
             Picasso.get().load(image).placeholder(R.drawable.default_avatar).into(userImageView);
         }
     }

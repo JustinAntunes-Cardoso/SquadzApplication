@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
@@ -13,6 +14,7 @@ import android.provider.MediaStore;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
@@ -59,6 +61,10 @@ public class profile extends AppCompatActivity implements PopupMenu.OnMenuItemCl
     private DatabaseReference userDatabase;
     String currentUserID;
     String downloadURL;
+
+    public static final String SHARED_PREFS = "sharedPrefs";
+    public static final String TEXT = "text";
+    String text;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -110,10 +116,49 @@ public class profile extends AppCompatActivity implements PopupMenu.OnMenuItemCl
             }
         });
 
+        Button next = findViewById(R.id.button3);
+        next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //this makes the button visible and  make edit text editable
+                EditText editText = findViewById(R.id.txtSub);
+                editText.setFocusableInTouchMode(true);
+                editText.setClickable(true);
+                editText.setCursorVisible(true);
+                editText.setFocusable(true);
+                Button resetButton=(Button)findViewById(R.id.button5);
+                resetButton.setVisibility(View.VISIBLE);
+
+            }
+        });
+
+        Button done = findViewById(R.id.button5);
+        done.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //this makes the button invis and makes the edittext not editable
+                EditText editText = (EditText) findViewById(R.id.txtSub);
+                editText.setFocusableInTouchMode(false);
+                editText.setClickable(false);
+                editText.setCursorVisible(false);
+                editText.setFocusable(false);
+                Button resetButton=(Button)findViewById(R.id.button5);
+                resetButton.setVisibility(View.INVISIBLE);
+                saveData();
+
+            }
+        });
+        loadData();
+        updateViews();
+
         Button logoutbtn = (Button) findViewById(R.id.button_logout);
         logoutbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                SharedPreferences preferences = getSharedPreferences("checkbox", MODE_PRIVATE);
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.putString("remember", "false");
+                editor.apply();
                 FirebaseAuth.getInstance().signOut();
                 //editor.putString("remember", "false");
                 //editor.apply();
@@ -359,6 +404,28 @@ public class profile extends AppCompatActivity implements PopupMenu.OnMenuItemCl
                         }
                     });
         }
+    }
+    public void saveData() {
+
+        EditText simpleEditText = (EditText) findViewById(R.id.txtSub);
+
+        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS,MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+
+        editor.putString(TEXT,simpleEditText.getText().toString().trim());
+        editor.apply();
+    }
+
+    public void loadData(){
+        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS,MODE_PRIVATE);
+        text = sharedPreferences.getString(TEXT,"");
+
+
+    }
+
+    public void updateViews(){
+        EditText simpleEditText = (EditText) findViewById(R.id.txtSub);
+        simpleEditText.setText(text);
     }
 }
 //        private fun deleteImage() {
