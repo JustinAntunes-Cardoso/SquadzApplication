@@ -22,15 +22,13 @@
 
     <Button
         android:id="@+id/button_logout"
-        android:layout_width="82dp"
-        android:layout_height="44dp"
+        android:layout_width="75dp"
+        android:layout_height="59dp"
         android:backgroundTint="@color/white"
         android:fontFamily="@font/permanent_marker"
-        android:text="logout"
+        android:text="Logout"
         android:textColor="@color/black"
-        android:textSize="10dp"
         app:cornerRadius="100dp"
-
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.951"
@@ -71,7 +69,6 @@
         app:layout_constraintVertical_bias="0.372" />
 
     <Button
-        android:id="@+id/button3"
         android:layout_width="150dp"
         android:layout_height="43dp"
         android:backgroundTint="@color/white"
@@ -88,7 +85,6 @@
         app:layout_constraintVertical_bias="0.443" />
 
     <Button
-        android:id="@+id/button4"
         android:layout_width="150dp"
         android:layout_height="43dp"
         android:backgroundTint="@color/white"
@@ -97,7 +93,6 @@
         android:textColor="@color/black"
         android:textSize="10sp"
         app:cornerRadius="100dp"
-
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.823"
@@ -119,7 +114,6 @@
         app:srcCompat="@drawable/back_arrow" />
 
     <ImageView
-        android:id="@+id/imageView5"
         android:layout_width="313dp"
         android:layout_height="122dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -130,7 +124,6 @@
         app:srcCompat="@drawable/streeball" />
 
     <ImageView
-        android:id="@+id/imageView6"
         android:layout_width="149dp"
         android:layout_height="133dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -142,7 +135,6 @@
         app:srcCompat="@drawable/kuroko_no_basket_cosplay_by_sheedochan_d_97_ubf_9_fullview" />
 
     <ImageView
-        android:id="@+id/imageView7"
         android:layout_width="149dp"
         android:layout_height="133dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -154,7 +146,6 @@
         app:srcCompat="@drawable/sports_mmo_games_freestyle_street_basketball_dunk_screenshot" />
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/card_view"
         android:layout_width="124dp"
         android:layout_height="113dp"
         app:cardCornerRadius="84dp"

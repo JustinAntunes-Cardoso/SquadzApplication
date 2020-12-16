@@ -47,8 +47,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
-import id.zelory.compressor.Compressor;
-
 public class profile extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
 
     Boolean choose;
@@ -84,12 +82,11 @@ public class profile extends AppCompatActivity implements PopupMenu.OnMenuItemCl
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-
                 String image = snapshot.child("image").getValue().toString();
-                //String back_image = snapshot.child("background_image").getValue().toString();
-                if(!image.equals("default")){
+                String back_image = snapshot.child("background").getValue().toString();
+                if (!image.equals("default")) {
                     Picasso.get().load(image).placeholder(R.drawable.default_avatar).into(profilePic);
-                    //Picasso.get().load(back_image).placeholder(R.drawable.default_avatar).into(background);
+                    Picasso.get().load(back_image).placeholder(R.drawable.richardbackground).into(background);
                 }
             }
 
@@ -130,34 +127,24 @@ public class profile extends AppCompatActivity implements PopupMenu.OnMenuItemCl
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(profile.this, MainActivity.class );
+                Intent intent = new Intent(profile.this, MainActivity.class);
                 startActivity(intent);
             }
         });
     }
 
     @Override
-    public void onActivityResult(int requestCode, int resultCode,Intent data) {
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         ImageView profilePic = (ImageView) findViewById(R.id.profileImage);
         ImageView background = (ImageView) findViewById(R.id.backgroundProfile);
-        if(requestCode==111 && resultCode == Activity.RESULT_OK && data != null && choose == true) {
+        if (requestCode == 111 && resultCode == Activity.RESULT_OK && data != null && choose == true) {
             Uri imageUri = data.getData();
             CropImage.activity(imageUri)
-                    .setAspectRatio(1,1)
+                    .setAspectRatio(1, 1)
                     .start(this);
-        }else if(requestCode==111 && resultCode == Activity.RESULT_OK && data != null){
-            filepath = data.getData();
-            try {
-                Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(),filepath);
-                background.setImageBitmap(bitmap);
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
         }
-
-        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
+        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE && choose == true) {
             CropImage.ActivityResult result = CropImage.getActivityResult(data);
             if (resultCode == RESULT_OK) {
                 Uri resultUri = result.getUri();
@@ -170,60 +157,132 @@ public class profile extends AppCompatActivity implements PopupMenu.OnMenuItemCl
 
                 String current_user_id = currentUserID;
 
-                File thumb_Path = new File(resultUri.getPath());
-
-
-                Bitmap thumbBitmap = new Compressor(this)
-                        .setMaxHeight(200)
-                        .setMaxWidth(200)
-                        .setQuality(75)
-                        .compressToBitmap(thumb_Path);
-
-                ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                thumbBitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
-                byte[] thumbByte = baos.toByteArray();
-
                 StorageReference filepathRef = mStorageRef.child("profile_images").child("profile:" + currentUserID + ".jpg");
 
                 filepathRef.putFile(resultUri).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
-                   @Override
-                   public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
-                       if(task.isSuccessful()){
+                    @Override
+                    public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
+                        if (task.isSuccessful()) {
 
-                           filepathRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                               @Override
-                               public void onSuccess(Uri uri) {
-                                   // Got the download URL for 'profile: + currentUserID +.jpg'
-                                   downloadURL = uri.toString();
+                            filepathRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                @Override
+                                public void onSuccess(Uri uri) {
+                                    // Got the download URL for 'profile: + currentUserID +.jpg'
+                                    downloadURL = uri.toString();
 
-                                   Map updateHash= new HashMap<>();
-                                   updateHash.put("image",downloadURL);
-                                   updateHash.put("background","default");
+                                    Map updateHash = new HashMap<>();
+                                    updateHash.put("image", downloadURL);
 
-                                   userDatabase.updateChildren(updateHash).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                       @Override
-                                       public void onComplete(@NonNull Task<Void> task) {
-                                           if(task.isSuccessful()){
-                                               pd.dismiss();
-                                               Toast.makeText(profile.this,"Successful Upload.",Toast.LENGTH_LONG).show();
-                                           }
-                                       }
-                                   });
-                               }
-                           }).addOnFailureListener(new OnFailureListener() {
-                               @Override
-                               public void onFailure(@NonNull Exception exception) {
-                                   // Handle any errors
-                                   Toast.makeText(profile.this,"Error in Uploading.",Toast.LENGTH_LONG).show();
-                               }
-                           });
+                                    userDatabase.updateChildren(updateHash).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+                                            if (task.isSuccessful()) {
+                                                pd.dismiss();
+                                                Toast.makeText(profile.this, "Successful Upload.", Toast.LENGTH_LONG).show();
+                                            }
+                                        }
+                                    });
+                                }
+                            }).addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception exception) {
+                                    // Handle any errors
+                                    Toast.makeText(profile.this, "Error in Uploading.", Toast.LENGTH_LONG).show();
+                                }
+                            });
 
-                       }else{
-                           pd.hide();
-                           Toast.makeText(profile.this,"Error in uploading",Toast.LENGTH_LONG).show();
-                       }
-                   }
-               });
+                        } else {
+                            pd.hide();
+                            Toast.makeText(profile.this, "Error in uploading", Toast.LENGTH_LONG).show();
+                        }
+                    }
+                });
+
+            } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
+                Exception error = result.getError();
+            }
+        }
+        if (requestCode == 111 && resultCode == Activity.RESULT_OK && data != null && choose == false) {
+            Uri backgroundUri = data.getData();
+            CropImage.activity(backgroundUri)
+                    .setAspectRatio(2, 1)
+                    .start(this);
+        }
+        //
+//            filepath = data.getData();
+//            try {
+//                Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(),filepath);
+//                background.setImageBitmap(bitmap);
+//
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE && choose == false) {
+            CropImage.ActivityResult result = CropImage.getActivityResult(data);
+            if (resultCode == RESULT_OK) {
+                Uri resultUri = result.getUri();
+
+                ProgressDialog pd = new ProgressDialog(profile.this);
+                pd.setTitle("Uploading Background Image..");
+                pd.setMessage("Please wait while we upload and process the image");
+                pd.setCanceledOnTouchOutside(false);
+                pd.show();
+
+                String current_user_id = currentUserID;
+
+//                    File thumb_Path = new File(resultUri.getPath());
+//
+//
+//                    Bitmap thumbBitmap = new Compressor(this)
+//                            .setMaxHeight(200)
+//                            .setMaxWidth(200)
+//                            .setQuality(75)
+//                            .compressToBitmap(thumb_Path);
+//
+//                    ByteArrayOutputStream baos = new ByteArrayOutputStream();
+//                    thumbBitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+//                    byte[] thumbByte = baos.toByteArray();
+
+                StorageReference backgroundFilepathRef = mStorageRef.child("background_images").child("background:" + currentUserID + ".jpg");
+
+                backgroundFilepathRef.putFile(resultUri).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
+                        if (task.isSuccessful()) {
+
+                            backgroundFilepathRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                @Override
+                                public void onSuccess(Uri uri) {
+                                    // Got the download URL for 'profile: + currentUserID +.jpg'
+                                    downloadURL = uri.toString();
+
+                                    Map updateHash = new HashMap<>();
+                                    updateHash.put("background", downloadURL);
+
+                                    userDatabase.updateChildren(updateHash).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+                                            if (task.isSuccessful()) {
+                                                pd.dismiss();
+                                                Toast.makeText(profile.this, "Successful Upload.", Toast.LENGTH_LONG).show();
+                                            }
+                                        }
+                                    });
+                                }
+                            }).addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception exception) {
+                                    // Handle any errors
+                                    Toast.makeText(profile.this, "Error in Uploading.", Toast.LENGTH_LONG).show();
+                                }
+                            });
+
+                        } else {
+                            pd.hide();
+                            Toast.makeText(profile.this, "Error in uploading", Toast.LENGTH_LONG).show();
+                        }
+                    }
+                });
 
             } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
                 Exception error = result.getError();
@@ -231,23 +290,10 @@ public class profile extends AppCompatActivity implements PopupMenu.OnMenuItemCl
         }
     }
 
-    public static String random() {
-        Random generator = new Random();
-        StringBuilder randomStringBuilder = new StringBuilder();
-        int randomLength = generator.nextInt(10)+10;
-        char tempChar;
-        for (int i = 0; i < randomLength; i++){
-            tempChar = (char) (generator.nextInt(96) + 32);
-            randomStringBuilder.append(tempChar);
-        }
-        return randomStringBuilder.toString();
-    }
-
     private boolean setChangeLocation(ImageView image) {
-        if(image==findViewById(R.id.profileImage)){
+        if (image == findViewById(R.id.profileImage)) {
             return true;
-        }
-        else if(image==findViewById(R.id.backgroundProfile)){
+        } else if (image == findViewById(R.id.backgroundProfile)) {
             return false;
         }
         return true;
@@ -263,7 +309,7 @@ public class profile extends AppCompatActivity implements PopupMenu.OnMenuItemCl
 
     @Override
     public boolean onMenuItemClick(MenuItem menuItem) {
-        switch(menuItem.getItemId()){
+        switch (menuItem.getItemId()) {
             case R.id.nav_person:
                 choose = setChangeLocation(profilePic);
                 startFileSelector(profilePic);
@@ -281,7 +327,7 @@ public class profile extends AppCompatActivity implements PopupMenu.OnMenuItemCl
         Intent i = new Intent();
         i.setType("image/*");
         i.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(Intent.createChooser(i,"Choose Image"),111);
+        startActivityForResult(Intent.createChooser(i, "Choose Image"), 111);
 
         if (filepath != null) {
             ProgressDialog pd = new ProgressDialog(this);
@@ -297,21 +343,21 @@ public class profile extends AppCompatActivity implements PopupMenu.OnMenuItemCl
                 }
 
             })
-            .addOnFailureListener(new OnFailureListener() {
+                    .addOnFailureListener(new OnFailureListener() {
 
-                @Override
-                public void onFailure(@NonNull Exception e) {
-                    pd.dismiss();
-                    Toast.makeText(getApplicationContext(), "Failure to get image", Toast.LENGTH_LONG).show();
-                }
-            })
-                .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-                    @Override
-                    public void onProgress(@NonNull UploadTask.TaskSnapshot snapshot) {
-                        Double progress = (100.0 * snapshot.getBytesTransferred()) / snapshot.getTotalByteCount();
-                        pd.setMessage("Uploaded"+progress.toString()+"%");
-                    }
-                });
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            pd.dismiss();
+                            Toast.makeText(getApplicationContext(), "Failure to get image", Toast.LENGTH_LONG).show();
+                        }
+                    })
+                    .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onProgress(@NonNull UploadTask.TaskSnapshot snapshot) {
+                            Double progress = (100.0 * snapshot.getBytesTransferred()) / snapshot.getTotalByteCount();
+                            pd.setMessage("Uploaded" + progress.toString() + "%");
+                        }
+                    });
         }
     }
 }
@@ -335,4 +381,3 @@ public class profile extends AppCompatActivity implements PopupMenu.OnMenuItemCl
 //            imageView.setImageResource(R.drawable.ic_launcher_background)
 //        }
 //    }
-

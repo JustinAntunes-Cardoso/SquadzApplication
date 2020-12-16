@@ -8,13 +8,13 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import com.example.squadzframes.FriendPage;
 import com.example.squadzframes.R;
 
 public class FriendFragment extends Fragment {
@@ -41,7 +41,13 @@ public class FriendFragment extends Fragment {
             }
         });
 
-
+        ImageView bttn = (ImageView) root.findViewById(R.id.add_friend_button);
+        bttn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(root).navigate(R.id.action_navigation_friends_to_allUsersActivity);
+            }
+        });
 
         return root;
 
@@ -57,7 +63,7 @@ public class FriendFragment extends Fragment {
     }
 
     public void openProfile(){
-        Intent intent = new Intent(getActivity(), FriendPage.class);
+        Intent intent = new Intent(getActivity(), FriendPageActivity.class);
         startActivity(intent);
     }
 

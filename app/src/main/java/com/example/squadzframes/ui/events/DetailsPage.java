@@ -10,8 +10,8 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.squadzframes.FriendPage;
 import com.example.squadzframes.R;
+import com.example.squadzframes.ui.friends.FriendPageActivity;
 import com.example.squadzframes.ui.home.HomeFragment;
 
 public class DetailsPage extends AppCompatActivity {
@@ -84,7 +84,7 @@ public class DetailsPage extends AppCompatActivity {
     }
 
     public void goView(){
-        Intent intent = new Intent (DetailsPage.this, FriendPage.class);
+        Intent intent = new Intent (DetailsPage.this, FriendPageActivity.class);
         startActivity(intent);
     }
 

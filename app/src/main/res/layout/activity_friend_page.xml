@@ -5,23 +5,22 @@
     android:layout_width="match_parent"
     android:background="@color/black"
     android:layout_height="match_parent"
-    tools:context=".FriendPage">
+    tools:context=".ui.friends.FriendPageActivity">
 
     <ImageView
-        android:id="@+id/justinbackground"
-        android:layout_width="422dp"
-        android:layout_height="270dp"
+        android:id="@+id/profile_background"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
         android:translationY="-60dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.545"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/justinbackground" />
 
-    <ImageView
-        android:id="@+id/justinprofile"
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/friend_image"
         android:layout_width="158dp"
         android:layout_height="114dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -29,11 +28,11 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.147"
-        app:srcCompat="@drawable/justinface" />
+        app:layout_constraintVertical_bias="0.123"
+        android:src="@drawable/justinface" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/friend_name"
         android:layout_width="211dp"
         android:layout_height="45dp"
         android:fontFamily="@font/permanent_marker"
@@ -49,7 +48,7 @@
         app:layout_constraintVertical_bias="0.3" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/status_friend"
         android:layout_width="320dp"
         android:layout_height="52dp"
         android:fontFamily="@font/permanent_marker"
@@ -65,7 +64,7 @@
         app:layout_constraintVertical_bias="0.372" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/add_button"
         android:layout_width="150dp"
         android:layout_height="43dp"
         android:backgroundTint="@color/white"
@@ -82,16 +81,15 @@
         app:layout_constraintVertical_bias="0.443" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/cancel_request_button"
         android:layout_width="150dp"
         android:layout_height="43dp"
         android:backgroundTint="@color/white"
         android:fontFamily="@font/permanent_marker"
-        android:text="@string/dm"
+        android:text="Cancel"
         android:textColor="@color/black"
         android:textSize="10dp"
         app:cornerRadius="100dp"
-
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.823"
@@ -113,7 +111,6 @@
         app:srcCompat="@drawable/back_arrow" />
 
     <ImageView
-        android:id="@+id/imageView5"
         android:layout_width="313dp"
         android:layout_height="122dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -124,7 +121,6 @@
         app:srcCompat="@drawable/streeball" />
 
     <ImageView
-        android:id="@+id/imageView6"
         android:layout_width="149dp"
         android:layout_height="133dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -136,7 +132,6 @@
         app:srcCompat="@drawable/kuroko_no_basket_cosplay_by_sheedochan_d_97_ubf_9_fullview" />
 
     <ImageView
-        android:id="@+id/imageView7"
         android:layout_width="149dp"
         android:layout_height="133dp"
         app:layout_constraintBottom_toBottomOf="parent"

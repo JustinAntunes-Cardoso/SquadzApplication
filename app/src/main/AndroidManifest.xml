@@ -13,7 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Squadzframes">
-        <activity android:name=".ui.friends.AllUsersActivity"></activity>
+        <activity android:name=".ui.friends.FriendPageActivity"></activity>
+        <activity android:name=".ui.friends.AllUsersActivity" />
         <activity
             android:name=".ui.events.popupActivity"
             tools:ignore="Instantiatable" />
@@ -30,7 +31,6 @@ ABOVE android:parentActivityName=".ui.events.OpenEvent"
         <activity android:name=".LocateEvent" />
         <activity android:name=".ui.events.CreateEvent" />
         <activity android:name=".ui.intro.SignUpPage" />
-        <activity android:name=".FriendPage" />
         <activity android:name=".ui.profile.profile" />
         <activity
             android:name=".ui.home.MainActivity"

@@ -32,7 +32,11 @@
         android:id="@+id/navigation_friends"
         android:name="com.example.squadzframes.ui.friends.FriendFragment"
         android:label="@string/title_friends"
-        tools:layout="@layout/friend_fragment" />
+        tools:layout="@layout/friend_fragment" >
+        <action
+            android:id="@+id/action_navigation_friends_to_allUsersActivity"
+            app:destination="@id/allUsersActivity" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_more"
@@ -99,6 +103,11 @@
         android:id="@+id/mainActivity"
         android:name="com.example.squadzframes.ui.home.MainActivity"
         android:label="MainActivity" />
+    <activity
+        android:id="@+id/allUsersActivity"
+        android:name="com.example.squadzframes.ui.friends.AllUsersActivity"
+        android:label="activity_all_users"
+        tools:layout="@layout/activity_all_users" />
 
     />
 </navigation>
