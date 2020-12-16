@@ -40,8 +40,14 @@ import com.squareup.picasso.Picasso;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
+
+import id.zelory.compressor.Compressor;
 
 public class profile extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
 
@@ -77,11 +83,14 @@ public class profile extends AppCompatActivity implements PopupMenu.OnMenuItemCl
         userDatabase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                String image = snapshot.child("image").getValue().toString();
-                String back_image = snapshot.child("background_image").getValue().toString();
 
-                Picasso.get().load(image).into(profilePic);
-                //Picasso.get().load(back_image).into(background);
+
+                String image = snapshot.child("image").getValue().toString();
+                //String back_image = snapshot.child("background_image").getValue().toString();
+                if(!image.equals("default")){
+                    Picasso.get().load(image).placeholder(R.drawable.default_avatar).into(profilePic);
+                    //Picasso.get().load(back_image).placeholder(R.drawable.default_avatar).into(background);
+                }
             }
 
             @Override
@@ -141,8 +150,7 @@ public class profile extends AppCompatActivity implements PopupMenu.OnMenuItemCl
             filepath = data.getData();
             try {
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(),filepath);
-
-                    background.setImageBitmap(bitmap);
+                background.setImageBitmap(bitmap);
 
             } catch (IOException e) {
                 e.printStackTrace();
@@ -160,7 +168,23 @@ public class profile extends AppCompatActivity implements PopupMenu.OnMenuItemCl
                 pd.setCanceledOnTouchOutside(false);
                 pd.show();
 
+                String current_user_id = currentUserID;
+
+                File thumb_Path = new File(resultUri.getPath());
+
+
+                Bitmap thumbBitmap = new Compressor(this)
+                        .setMaxHeight(200)
+                        .setMaxWidth(200)
+                        .setQuality(75)
+                        .compressToBitmap(thumb_Path);
+
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                thumbBitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+                byte[] thumbByte = baos.toByteArray();
+
                 StorageReference filepathRef = mStorageRef.child("profile_images").child("profile:" + currentUserID + ".jpg");
+
                 filepathRef.putFile(resultUri).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
                    @Override
                    public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
@@ -171,7 +195,12 @@ public class profile extends AppCompatActivity implements PopupMenu.OnMenuItemCl
                                public void onSuccess(Uri uri) {
                                    // Got the download URL for 'profile: + currentUserID +.jpg'
                                    downloadURL = uri.toString();
-                                   userDatabase.child("image").setValue(downloadURL).addOnCompleteListener(new OnCompleteListener<Void>() {
+
+                                   Map updateHash= new HashMap<>();
+                                   updateHash.put("image",downloadURL);
+                                   updateHash.put("background","default");
+
+                                   userDatabase.updateChildren(updateHash).addOnCompleteListener(new OnCompleteListener<Void>() {
                                        @Override
                                        public void onComplete(@NonNull Task<Void> task) {
                                            if(task.isSuccessful()){
