@@ -124,9 +124,9 @@ public class AllUsersActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
 
-                        Intent profileIntent = new Intent(AllUsersActivity.this,FriendPageActivity.class);
-                        profileIntent.putExtra("current_user_id", current_user_id);
-                        startActivity(profileIntent);
+//                        Intent profileIntent = new Intent(AllUsersActivity.this,FriendPageActivity.class);
+//                        profileIntent.putExtra("current_user_id", current_user_id);
+//                        startActivity(profileIntent);
 
 //                        usersViewHolder.add.setEnabled(false);
 //
@@ -200,7 +200,7 @@ public class AllUsersActivity extends AppCompatActivity {
         public UsersViewHolder(@NonNull View itemView) {
             super(itemView);
             userName = itemView.findViewById(R.id.user_name);
-            add = itemView.findViewById(R.id.add_button);
+            add = itemView.findViewById(R.id.view_button);
             mView = itemView;
         }
         public void setName(String name){
