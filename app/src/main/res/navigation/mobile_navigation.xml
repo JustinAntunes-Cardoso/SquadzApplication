@@ -32,7 +32,11 @@
         android:id="@+id/navigation_notifications"
         android:name="com.example.squadzframes.ui.notifications.NotificationsFragment"
         android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        tools:layout="@layout/fragment_notifications" >
+        <action
+            android:id="@+id/action_navigation_notifications_to_machineLocationActivity"
+            app:destination="@id/machineLocationActivity" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_friends"
@@ -122,6 +126,14 @@
         android:name="com.example.squadzframes.ui.events.LocateEventMap"
         android:label="locateeventmap"
         tools:layout="@layout/locateeventmap" />
+    <activity
+        android:id="@+id/weatherActivity"
+        android:name="com.example.squadzframes.ui.notifications.WeatherActivity"
+        android:label="WeatherActivity" />
+    <activity
+        android:id="@+id/machineLocationActivity"
+        android:name="com.example.squadzframes.ui.notifications.MachineLocationActivity"
+        android:label="MachineLocationActivity" />
 
     />
 </navigation>

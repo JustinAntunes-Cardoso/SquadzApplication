@@ -114,4 +114,12 @@
     <!--    string api key for google maps used by LocateEventMap.class -->
     <string name="google_maps_key" translatable="false">AIzaSyDrxoUOrSU8E8_9zi7Ceth-rvztIYZ4ANU</string>
     <string name="gameplaytype">Competitive</string>
+    <string name="weather">Weather</string>
+    <string name="title_activity_weather">WeatherActivity</string>
+    <string name="temperature">Temperature</string>
+    <string name="humidity">Humidity</string>
+    <string name="title_activity_machine_location">MachineLocationActivity</string>
+
+    <string name="locationname">locationName</string>
+
 </resources>
