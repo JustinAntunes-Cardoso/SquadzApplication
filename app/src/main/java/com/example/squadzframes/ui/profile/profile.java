@@ -88,6 +88,7 @@ public class profile extends AppCompatActivity implements PopupMenu.OnMenuItemCl
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
+                //Default image set
                 String image = snapshot.child("image").getValue().toString();
                 String back_image = snapshot.child("background").getValue().toString();
                 if (!image.equals("default")) {
@@ -179,6 +180,7 @@ public class profile extends AppCompatActivity implements PopupMenu.OnMenuItemCl
     }
 
     @Override
+    //Once a changed happens
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         ImageView profilePic = (ImageView) findViewById(R.id.profileImage);
@@ -202,7 +204,9 @@ public class profile extends AppCompatActivity implements PopupMenu.OnMenuItemCl
 
                 String current_user_id = currentUserID;
 
+                //saves the image
                 StorageReference filepathRef = mStorageRef.child("profile_images").child("profile:" + currentUserID + ".jpg");
+
 
                 filepathRef.putFile(resultUri).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
                     @Override
@@ -262,6 +266,7 @@ public class profile extends AppCompatActivity implements PopupMenu.OnMenuItemCl
 //            } catch (IOException e) {
 //                e.printStackTrace();
 //            }
+
         if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE && choose == false) {
             CropImage.ActivityResult result = CropImage.getActivityResult(data);
             if (resultCode == RESULT_OK) {

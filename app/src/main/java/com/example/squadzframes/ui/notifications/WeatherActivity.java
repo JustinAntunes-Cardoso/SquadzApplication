@@ -15,6 +15,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class WeatherActivity extends AppCompatActivity {
 
     private DatabaseReference mWeatherDatabase;
@@ -33,6 +36,8 @@ public class WeatherActivity extends AppCompatActivity {
         timeStamp = (TextView) findViewById(R.id.timePlaceHolder);
         ImageView locationView = findViewById(R.id.courtImage);
 
+
+
         mWeatherDatabase = FirebaseDatabase.getInstance().getReference().child("Weather");
         mWeatherDatabase.child(machineName).addValueEventListener(new ValueEventListener() {
             @Override
@@ -40,8 +45,12 @@ public class WeatherActivity extends AppCompatActivity {
                 String hum = snapshot.child("Humidity").getValue().toString();
                 String loc = snapshot.child("location").getValue().toString();
                 String temp = snapshot.child("Temperature").getValue().toString();
-                String time = snapshot.child("Time").getValue().toString();
+               //String time = snapshot.child("Time").getValue().toString();
                 String image = snapshot.child("background").getValue().toString();
+
+                //Set time stamp when the data changes.
+                SimpleDateFormat s = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                String time = s.format(new Date());
 
                 location.setText(loc);
                 humidity.setText(hum);
